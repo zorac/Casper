@@ -20,9 +20,10 @@ into the {body} of the default.hbs template --}}
             <header class="post-full-header">
                 <section class="post-full-meta">
                     <time class="post-full-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
-                    {{#primary_tag}}
-                        <span class="date-divider">/</span> <a href="{{url}}">{{name}}</a>
-                    {{/primary_tag}}
+                    {{!-- Zorac: all tags --}}
+                    {{#if tags}}
+                        <span class="date-divider">/</span> {{tags separator=",&nbsp;"}}
+                    {{/if}}
                 </section>
                 <h1 class="post-full-title">{{title}}</h1>
             </header>
@@ -69,28 +70,10 @@ into the {body} of the default.hbs template --}}
                 {{/author}}
             </footer>
 
-            {{!--
-
-            If you use Disqus comments, just uncomment this block.
-            The only thing you need to change is "test-apkdzgmqhj" - which
-            should be replaced with your own Disqus site-id.
-
+            {{!-- Zorac: display comments --}}
             <section class="post-full-comments">
-                <div id="disqus_thread"></div>
-                <script>
-                    var disqus_config = function () {
-                        this.page.url = '{{url absolute="true"}}';
-                        this.page.identifier = 'ghost-{{comment_id}}';
-                    };
-                    (function() {
-                        var d = document, s = d.createElement('script');
-                        s.src = 'https://test-apkdzgmqhj.disqus.com/embed.js';
-                        s.setAttribute('data-timestamp', +new Date());
-                        (d.head || d.body).appendChild(s);
-                    })();
-                </script>
+                <div data-title="{{title}}" data-isso-id="/p/{{uuid}}/" id="isso-thread"></div>
             </section>
-            --}}
 
         </article>
 
@@ -217,4 +200,7 @@ $(document).ready(function () {
     update();
 });
 </script>
+
+{{!-- Zorac: script needed for comments --}}
+<script type="text/javascript" data-isso="/isso/" src="/isso/js/embed.min.js"></script>
 {{/contentFor}}

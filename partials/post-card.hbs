@@ -7,8 +7,9 @@
     <div class="post-card-content">
         <a class="post-card-content-link" href="{{url}}">
             <header class="post-card-header">
-                {{#if primary_tag}}
-                    <span class="post-card-tags">{{primary_tag.name}}</span>
+                {{!-- Zorac: more tags --}}
+                {{#if tags}}
+                    <span class="post-card-tags">{{tags autolink="false" limit="3"}}</span>
                 {{/if}}
                 <h2 class="post-card-title">{{title}}</h2>
             </header>
@@ -21,6 +22,15 @@
                 <img class="author-profile-image" src="{{author.profile_image}}" alt="{{author.name}}" />
             {{/if}}
             <span class="post-card-author">{{author}}</span>
+            {{!-- Zorac: add date and comment counts --}}
+            {{#if author.profile_image}}
+                <span class="post-card-date">
+                    <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMMM YYYY"}}</time>
+                </span>
+                <span class="post-card-comments">
+                    <a data-isso-id="/p/{{uuid}}/" href="{{url}}#isso-thread">Comments</a>
+                </span>
+            {{/if}}
         </footer>
     </div>
 </article>
