@@ -24,16 +24,16 @@ h2.site-description {
 
 .post-card-date,
 .post-card-comments {
-    margin-left: 1rem;
-    position: absolute;
-    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 20px;
 }
 
 .post-card-date,
 .post-card-comments a {
     color: #738a94;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 500;
+    line-height: 33px;
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }

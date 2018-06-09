@@ -1,11 +1,15 @@
 {
     "name": "zorac",
     "description": "Modified version of Casper for zorac.xyz",
-    "version": "2.1.7",
+    "version": "2.3.2",
     "engines": {
         "ghost": ">=1.2.0"
     },
     "license": "MIT",
+    "scripts": {
+        "dev": "gulp",
+        "zip": "gulp zip"
+    },
     "author": {
         "name": "Ghost Foundation",
         "email": "hello@ghost.org",
@@ -32,7 +36,6 @@
         "cssnano": "3.7.1",
         "gulp": "3.9.1",
         "gulp-livereload": "3.8.1",
-        "gulp-nodemon": "2.1.0",
         "gulp-postcss": "6.1.1",
         "gulp-sourcemaps": "1.6.0",
         "gulp-util": "3.0.7",
